@@ -1,0 +1,26 @@
+@page
+@using System.Data.SqlClient;
+
+@{
+    try {
+        string id = Request.Query["id"];
+
+         string connectioString = "Initial Catalog=Client; Data Source=localhost,1433;"
+            + "Persist Security Info=true; User ID=sa; Password=1q2w3e4r@#$";
+            using (SqlConnection connection = new SqlConnection(connectioString))
+            {
+                connection.Open();
+                string sql = "delete from Client where id=@id";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+
+
+    } catch(Exception ex)
+    {}
+
+    Response.Redirect("/Clients/Client"); 
+}

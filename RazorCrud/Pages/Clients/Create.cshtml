@@ -1,0 +1,66 @@
+@page
+@model RazorCrud.Pages.Clients.Create
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <br>
+    @if (Model.errorMessage.Length > 0)
+    {
+        <div class="alert alert-warning aler-dismissible fade show">
+            <strong >@Model.errorMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"  aria-label="Close">
+
+            </button>
+        </div>
+    }
+
+    <form method="POST">
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="name" value="@Model.cliente.name"/>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="email" value="@Model.cliente.email"/>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Phone</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="phone" value="@Model.cliente.phone"/>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Address</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="address" value="@Model.cliente.address"/>
+            </div>
+        </div>
+
+        @if (Model.successMessage.Length > 0)
+        {
+            <div class="alert alert-success aler-dismissible fade show">
+                <strong >@Model.successMessage</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"  aria-label="Close">
+
+                </button>
+            </div>
+        }
+
+        <div class="row mb-3">
+            <div class="offset-sm-3 col-sm-3 d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a href="/" class="btn btn-outline-primary">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
